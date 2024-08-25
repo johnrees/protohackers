@@ -22,7 +22,7 @@ defmodule Protohackers.SmokeTest do
 
     case :gen_tcp.listen(5005, listen_options) do
       {:ok, listen_socket} ->
-        Logger.info("Server running on port 5005")
+        Logger.info("Smoke Test running on port 5005")
         state = %__MODULE__{listen_socket: listen_socket}
         {:ok, state, {:continue, :accept}}
 

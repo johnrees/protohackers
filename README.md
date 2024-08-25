@@ -1,7 +1,8 @@
 # Protohackers
 
 - [x] 0: [Smoke Test](https://protohackers.com/problem/0)
-- [ ] 1: [Prime Time](https://protohackers.com/problem/1)
+- [x] 1: [Prime Time](https://protohackers.com/problem/1)
+- [ ] 2: [Means to an End](https://protohackers.com/problem/2)
 
 ## Running locally
 
