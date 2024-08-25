@@ -1,4 +1,4 @@
-defmodule Protohackers.EchoServerTest do
+defmodule Protohackers.SmokeTestTest do
   use ExUnit.Case
 
   test "echoes anything back" do

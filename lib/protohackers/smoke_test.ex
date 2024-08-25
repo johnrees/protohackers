@@ -1,4 +1,4 @@
-defmodule Protohackers.EchoServer do
+defmodule Protohackers.SmokeTest do
   use GenServer
 
   require Logger
@@ -48,7 +48,6 @@ defmodule Protohackers.EchoServer do
   defp handle_connection(socket) do
     case recv_until_closed(socket, _buffer = "", _buffered_size = 0) do
       {:ok, data} -> :gen_tcp.send(socket, data)
-      {:error, :buffer_overflow, partial_data} -> :gen_tcp.send(socket, partial_data)
       {:error, reason} -> Logger.error("Failed to receive data: #{inspect(reason)}")
     end
 
@@ -60,7 +59,7 @@ defmodule Protohackers.EchoServer do
   defp recv_until_closed(socket, buffer, buffered_size) do
     case :gen_tcp.recv(socket, 0, 10_000) do
       {:ok, data} when buffered_size + byte_size(data) > @limit ->
-        {:error, :buffer_overflow, buffer}
+        {:error, :buffer_overflow}
 
       {:ok, data} ->
         recv_until_closed(socket, [buffer, data], buffered_size + byte_size(data))
